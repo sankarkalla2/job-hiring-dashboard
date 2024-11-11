@@ -1,9 +1,15 @@
 import AddCandidateForm from "@/components/forms/add-new-candidate";
 import Modal from "@/components/global/modal";
-import CandidateList from "@/components/global/tracking-dashboard";
+
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
+
+const CandidateListClient = dynamic(
+  () => import('@/components/global/tracking-dashboard'),
+  { ssr: false }
+)
 
 export default function DashboardPage() {
   return (
@@ -30,7 +36,7 @@ export default function DashboardPage() {
           {/* <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
             <CandidateList />
           </Suspense> */}
-          <CandidateList />
+          <CandidateListClient />
         </div>
       </div>
     </div>
