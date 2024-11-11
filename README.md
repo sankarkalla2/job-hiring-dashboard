@@ -37,6 +37,27 @@
 - **Feature 2**: Description of feature 2.
 - **Feature 3**: Description of feature 3.
 
+
+
+## Application Screenshots
+
+### Login Page
+![Login Screen](./docs/images/login.png)
+*Secure authentication interface with email and password login*
+
+### Registration
+![Registration Screen](./docs/images/register.png)
+*User registration form with validation and secure account creation*
+
+### Dashboard
+![Main Dashboard](./docs/images/main-page.png)
+*Main dashboard showing candidate tracking overview and key metrics*
+
+### Add New Candidate
+![Add Candidate Form](./docs/images/add-candidate.png)
+*Comprehensive form for adding new candidates with all relevant details*
+
+
 ## Contributing
 
 1. Fork the repository.

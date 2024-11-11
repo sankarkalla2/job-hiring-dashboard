@@ -15,6 +15,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { format, formatDistanceToNow } from "date-fns";
+import { useEffect, useState } from "react";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -71,12 +72,21 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => {
       const router = useRouter();
       const status = row.original.status;
-      const token = localStorage.getItem("token");
-      if (!token) return router.push("/sign-in");
-      console.log(token, "useauthcontext");
+      const [token, setToken] = useState<string | null>(null);
+
+      useEffect(() => {
+        const storedToken = localStorage.getItem("token");
+        if (!storedToken) {
+          router.push("/sign-in");
+        } else {
+          setToken(storedToken);
+        }
+      }, [router]);
+
       const { mutate } = useMutationData(
         ["update-job"],
         async (value: string) => {
+          if (!token) return;
           await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/jobs/${row.original.id}`,
             {
@@ -92,16 +102,13 @@ export const columns: ColumnDef<Payment>[] = [
         ["get-jobs"]
       );
 
-      console.log(row.original.id, "row");
+      if (!token) return null;
+
       return (
         <Select
           value={status}
           onValueChange={(value) => {
             mutate(value);
-            row.original.status = value as
-              | "Pending"
-              | "In Progress"
-              | "Completed";
           }}
         >
           <SelectTrigger className="w-[140px]" defaultValue={status}>

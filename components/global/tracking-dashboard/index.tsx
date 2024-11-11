@@ -1,23 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+
 import { useQueryData } from "@/hooks/use-qery-data";
 import { headers } from "next/headers";
 import { useRouter } from "next/navigation";
@@ -34,22 +18,19 @@ type Candidate = {
 
 export default function CandidateList() {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
-  const [filter, setFilter] = useState("");
-  const [sortBy, setSortBy] = useState<keyof Candidate>("createdAt");
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+
   const token = localStorage.getItem("token");
   const router = useRouter();
 
-  const { data } = useQueryData(
-    ["get-jobs"],
-    async () =>
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/jobs`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((res) => res.json())
-  );
+  const { data } = useQueryData(["get-jobs"], async () => {
+    if (!token) return [];
+    return await fetch(`${process.env.NEXT_PUBLIC_API_URL}/jobs`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => res.json());
+  });
   console.log(data);
   useEffect(() => {
     // Move localStorage access to useEffect
@@ -64,47 +45,6 @@ export default function CandidateList() {
 
   return (
     <div className="space-y-4">
-      {/* <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Date Added</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {filteredAndSortedCandidates.map((candidate) => (
-              <TableRow key={candidate.id}>
-                <TableCell>{candidate.name}</TableCell>
-                <TableCell>{candidate.email}</TableCell>
-                <TableCell>
-                  <Select
-                    value={candidate.status}
-                    onValueChange={(value) =>
-                      handleStatusChange(
-                        candidate.id,
-                        value as Candidate["status"]
-                      )
-                    }
-                  >
-                    <SelectTrigger className="w-[140px]">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Pending">Pending</SelectItem>
-                      <SelectItem value="In Progress">In Progress</SelectItem>
-                      <SelectItem value="Completed">Completed</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </TableCell>
-                <TableCell>
-                  {new Date(candidate.date).toLocaleDateString()}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table> */}
       <DataTable columns={columns} data={candidates} />
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { AuthContextProvider } from "@/context/useAuthContext";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function DashboardLayout({
   children,
@@ -9,8 +10,13 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
-  const token = localStorage.getItem("token");
-  if (!token) return router.push("/sign-in");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/sign-in");
+    }
+  }, [router]);
 
   return <div>{children}</div>;
 }
