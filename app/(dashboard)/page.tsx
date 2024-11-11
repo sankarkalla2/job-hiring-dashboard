@@ -1,3 +1,5 @@
+"use client";
+
 import AddCandidateForm from "@/components/forms/add-new-candidate";
 import Modal from "@/components/global/modal";
 
