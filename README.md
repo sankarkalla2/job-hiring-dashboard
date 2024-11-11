@@ -41,20 +41,20 @@
 
 ## Application Screenshots
 
-### Login Page
-![Login Page]([https://utfs.io/f/EW20NNhMOnaK0a2EbaXIKjTH6Uupn5YsqGcvoJRZt8OhBNwP])
+### Dashboard
+![Dashboard](https://utfs.io/f/0Lm0AtvlOF3LDcuqU7hymLF5i8xdXfMNQ9UV7es1abtpgPR4)
 *Secure authentication interface with email and password login*
 
 ### Registration
-![Registration Screen](./docs/images/register.png)
+![Registration Screen](https://utfs.io/f/0Lm0AtvlOF3LLiaCelkQVfdJaBoybXerzxuIkS382EqwRp9O)
 *User registration form with validation and secure account creation*
 
-### Dashboard
-![Main Dashboard](./docs/images/main-page.png)
+### Login
+![Login Schreen](https://utfs.io/f/0Lm0AtvlOF3LDpHdS8hymLF5i8xdXfMNQ9UV7es1abtpgPR4)
 *Main dashboard showing candidate tracking overview and key metrics*
 
 ### Add New Candidate
-![Add Candidate Form](./docs/images/add-candidate.png)
+![Add Candidate Form](https://utfs.io/f/0Lm0AtvlOF3LkF6UXsOOACSdw5EsgQI8JDpzX3NYjHrUvLVm)
 *Comprehensive form for adding new candidates with all relevant details*
 
 
