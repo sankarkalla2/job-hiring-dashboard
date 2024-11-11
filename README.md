@@ -4,7 +4,7 @@
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/your-repo-name.git
+   git clone https://github.com/sankarkalla2/job-hiring-dashboard.git
    ```
 2. Navigate to the project directory:
    ```sh
@@ -14,28 +14,21 @@
    ```sh
    npm install
    ```
-   or if you are using yarn:
-   ```sh
-   yarn install
-   ```
+
 
 ## Usage
+1.setup environment values
+   NEXT_PUBLIC_API_URL=http://localhost:5000
+2. Start the development server:
+   ```sh
+   npm run dev
+   ```
 
-1. Start the development server:
-   ```sh
-   npm start
-   ```
-   or if you are using yarn:
-   ```sh
-   yarn start
-   ```
 2. Open your browser and go to `http://localhost:3000` to see the application running.
 
-## Functionality
+##TECH STACK
 
-- **Feature 1**: Description of feature 1.
-- **Feature 2**: Description of feature 2.
-- **Feature 3**: Description of feature 3.
+ 1. NextJs, 2.Tailwind Css, 3. ExpressJs, 4. Typescript, 5.JWT Authetication, 6. Posgresql, 7.Tanstack Query
 
 
 
