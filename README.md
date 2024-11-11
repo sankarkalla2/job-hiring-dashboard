@@ -42,7 +42,7 @@
 ## Application Screenshots
 
 ### Login Page
-![Login Screen]([(https://utfs.io/f/5b4a207d-0e22-471a-abb1-f83630a5300c-gknr3a.png)])
+![Login Page]([https://utfs.io/f/EW20NNhMOnaK0a2EbaXIKjTH6Uupn5YsqGcvoJRZt8OhBNwP])
 *Secure authentication interface with email and password login*
 
 ### Registration
